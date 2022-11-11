@@ -12,10 +12,15 @@ const getAdminBoard = () => {
     return axios.get(API_URL + "admin", {headers: authHeader()});
 };
 
+const getPublicContent = () => {
+    return axios.get(API_URL + "all");
+};
+
 
 const UserService = {
     getUserBoard,
     getAdminBoard,
+    getPublicContent,
 };
 
 export default UserService;
