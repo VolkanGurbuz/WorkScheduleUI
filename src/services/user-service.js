@@ -1,38 +1,21 @@
-import axious from "axios";
+import axios from "axios";
+import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:8081/api/auth/";
+const API_URL = "http://localhost:8081/api/test/";
 
-const register = (username, email, password) => {
-    return axious.post(API_URL + "signup", {
-        username, email, password,
-    })
+
+const getUserBoard = () => {
+    return axios.get(API_URL + "user", {headers: authHeader()});
+};
+
+const getAdminBoard = () => {
+    return axios.get(API_URL + "admin", {headers: authHeader()});
 };
 
 
-const login = (username, password) => {
-    return axious.post(API_URL + "signin", {
-        username, password
-    }).then((response) => {
-        if (response.data.accessToken) {
-            localStorage.setItem("user", JSON.stringify(response.data));
-        }
-        return response.data;
-    })
+const UserService = {
+    getUserBoard,
+    getAdminBoard,
 };
 
-const logout = () => {
-    localStorage.removeItem("user");
-}
-
-const getCurrentUser = () => {
-    return JSON.parse(localStorage.getItem("user"));
-}
-
-const AuthService = {
-    register,
-    login,
-    logout,
-    getCurrentUser,
-}
-
-export default AuthService;
+export default UserService;
