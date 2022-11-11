@@ -1,7 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+This project was created for [WorkSchedule](https://github.com/VolkanGurbuz/WorkSchedule) which will be used on front-end side.
 ## Available Scripts
 
 In the project directory, you can run:
